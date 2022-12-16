@@ -30,13 +30,16 @@ def to_dummy(col,num = None):
     for element in li:
         data[element] = data[col].astype(str).str.contains(element, case=False).astype(int)
 
+@st.cache
+def convert(dum):
+    for d in dum:
+        if d == 'actor':
+            to_dummy(d,num = 4)
+        else:
+            to_dummy(d)
+        print(d)
 dum = ['country','director','actor','genres_list','key']
-for d in dum:
-    if d == 'actor':
-        to_dummy(d,num = 4)
-    else:
-        to_dummy(d)
-    print(d)
+convert(dum)
 
 X = data.drop(['id','title','director','actor', 'overview','genres_list','key','country'], axis=1)
 scaler = StandardScaler()
