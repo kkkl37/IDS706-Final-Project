@@ -4,7 +4,7 @@ import warnings
 warnings.filterwarnings("ignore")
 import streamlit as st
 
-data = pd.read_csv("/workspaces/IDS706-Final-Project/clean_df/clean_df.csv")
+data = pd.read_csv("./clean_df/clean_df.csv")
 data = data.drop(['Unnamed: 0'],axis = 1)
 data = data.dropna(subset=['overview','director','runtime','year']).reset_index(drop=True)
 data = data.fillna('')
